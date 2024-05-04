@@ -1,31 +1,16 @@
-
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import {
-    persistStore,
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
 
 import exampleReducer from "./example";
-import rootSaga from "./rootSaga";
 import testReducer from "./test";
 import darkModeReducer from "./darkMode";
 
-const sagaMiddleware = createSagaMiddleware();
-const persistConfig = {
-    key: "root",
-    version: 1,
-    storage,
-    whitelist: ["comments", "posts"],
-};
-const persistedReducer = persistReducer(persistConfig, testReducer);
+// const persistConfig = {
+//     key: "root",
+//     version: 1,
+//     storage,
+//     whitelist: ["comments", "posts"],
+// };
+// const persistedReducer = persistReducer(persistConfig, testReducer);
 
 export const store = configureStore({
     devTools: process.env.NODE_ENV === "development",
@@ -33,18 +18,11 @@ export const store = configureStore({
         example: exampleReducer,
         test: testReducer,
         darkMode: darkModeReducer,
-        persist: persistedReducer,
+        // persist: persistedReducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }).concat(sagaMiddleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
-export const persistor = persistStore(store);
 
-sagaMiddleware.run(rootSaga);
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -53,5 +31,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
     unknown,
     Action<string>
 >;
-
-

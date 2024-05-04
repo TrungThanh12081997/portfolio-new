@@ -118,7 +118,7 @@ const Footer: React.FC<FooterProps> = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <MyMapComponent
+                    {/* <MyMapComponent
                         onMouseEnter={() => {
                             if (disableSwiper?.setDisable) {
                                 disableSwiper?.setDisable(true);
@@ -138,7 +138,7 @@ const Footer: React.FC<FooterProps> = () => {
                             />
                         }
                         mapElement={<div style={{ height: `100%` }} />}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>

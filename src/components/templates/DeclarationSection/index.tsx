@@ -15,7 +15,9 @@ const DeclarationSection: React.FC<DeclarationSectionProps> = () => {
     const { darkMode } = darkmodeSlice;
 
     return (
-        <div className={classNames(darkMode ? "bg-black" : "bg-vani")}>
+        <div
+        // className={classNames(darkMode ? "bg-black" : "bg-vani")}
+        >
             <div
                 className={classNames(
                     "container mx-auto my-8 md:my-10 lg:my-12 xl:my-14 px-6 md:px-8 lg:px-12",

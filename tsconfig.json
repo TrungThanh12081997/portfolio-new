@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/templates/HeroSection/index.jsx", "src/components/atoms/GoogleMap/index.jsx", "src/components/atoms/GoogleMap/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/templates/HeroSection/index.jsx", "src/components/atoms/GoogleMap/index.jsx", "src/components/atoms/GoogleMap/index.jsx", "src/components/templates/StarCanvas/index.jsx", "src/components/templates/AboutSection/index.jsx", "src/components/molecules/ToggleHover/index.js", "src/components/organisms/ProjectsSection/index.jsx"],
   "exclude": ["node_modules"]
 }

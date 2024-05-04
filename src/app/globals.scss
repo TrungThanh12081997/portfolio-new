@@ -7,8 +7,15 @@
 @import "~slick-carousel/slick/slick-theme.css";
 @import "../assets/font/index.scss";
 
+:root {
+    --cursor-size: 32px;
+    --cursor-x: 0;
+    --cursor-y: 0;
+}
 $gradient-cl: -webkit-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
 $gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
+// $gradient-cl-cream: linear-gradient(to right, #f9e9d1, #dccdb7, #b7ab98);
+$gradient-cl-cream: linear-gradient(to right, #f9e9d1, #f9e9d1, #f9e9d1);
 
 html,
 body,
@@ -91,10 +98,10 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
     border: 0;
     font-size: 100%;
+    margin: 0;
+    padding: 0;
     vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -111,40 +118,48 @@ nav,
 section {
     display: block;
 }
+
 body {
-    line-height: 1.4;
+    cursor: context-menu;
     font-size: 16px;
     font-weight: 500;
-    overflow-x: hidden;
     letter-spacing: 0.1px;
-    cursor: context-menu;
+    line-height: 1.4;
+    overflow-x: hidden;
+
     &::-webkit-scrollbar {
         width: 6px;
     }
+
     &::-webkit-scrollbar-track {
         background: transparent;
     }
+
     &::-webkit-scrollbar-thumb {
         background: #abb2bf;
-        height: 2px;
         border-radius: 24px;
+        height: 2px;
     }
 }
+
 ol,
 ul {
     list-style: none;
 }
+
 blockquote,
 q {
     quotes: none;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
     content: "";
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -158,31 +173,38 @@ table {
 // $gradient-cl: linear-gradient(to right, #d7a849, #fcf6ba, #dea833, #fbf5b7);
 
 .ant-alert {
-    width: max-content;
-    margin: 0 auto;
     font-family: "fira";
     font-weight: 500;
-    // color: black;
-    transition: 0.5s;
+    left: 50%;
+    margin: 0 auto;
     position: fixed;
     top: 40%;
-    left: 50%;
     transform: translateX(-50%);
+    // color: black;
+    transition: 0.5s;
+    width: max-content;
     z-index: 100;
 }
 
 .text-gradient {
     background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    background-clip: text;
     background-image: $gradient-cl;
+    color: transparent;
 }
 
 .text-gradient-dark {
     background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    background-clip: text;
     background-image: $gradient-cl-dark;
+    color: transparent;
+}
+
+.text-gradient-cream {
+    background-clip: text;
+    background-clip: text;
+    background-image: $gradient-cl-cream;
+    color: transparent;
 }
 
 .border-gradient {
@@ -204,15 +226,16 @@ table {
 .slick-prev,
 .slick-next,
 .slick-arrow {
-    z-index: 10;
     display: none !important;
+    z-index: 10;
+
     &::before {
-        z-index: 10;
-        font-size: 40px;
         background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
+        background-clip: text;
         background-image: $gradient-cl;
+        color: transparent;
+        font-size: 40px;
+        z-index: 10;
 
         @media (max-width: 765px) {
             font-size: 36px;
@@ -222,25 +245,29 @@ table {
 
 .slick-dots {
     display: block;
-    position: relative;
-    margin-top: 12px;
     margin-bottom: 32px;
+    margin-top: 12px;
+    position: relative;
+
     .slick-active {
         transition: 0.2s;
 
         button {
-            transition: 0.2s;
             border-radius: 12px;
+            transition: 0.2s;
             width: 100px;
             @media (max-width: 576px) {
                 width: 50px;
             }
         }
     }
+
     li {
         width: max-content;
+
         button {
             border-radius: 50%;
+
             &::before {
                 display: none;
             }
@@ -254,4 +281,45 @@ table {
 
 .swiper {
     height: 100vh;
+}
+
+.background-dark {
+    background-image: $gradient-cl-dark;
+}
+
+.background-cream {
+    background-image: $gradient-cl-cream;
+}
+
+.mask {
+    background: $gradient-cl-dark;
+
+    mask-image: url("../assets/test-mask.svg");
+
+    mask-repeat: no-repeat;
+
+    mask-size: 40px;
+
+    position: absolute;
+}
+
+.custom-before {
+    p {
+        // color: #798277;
+        content: attr(data-text);
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        transition: 1s;
+        // width: 0%;
+        // z-index: 10;
+    }
+}
+
+.green-pink-gradient {
+    background: "#00cea8";
+    background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+    background: linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
 }

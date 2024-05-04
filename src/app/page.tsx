@@ -21,6 +21,10 @@ import { useDispatch } from "react-redux";
 import icCloseDark from "@/assets/img/icons/ic_close_dark.png";
 import { toggleEmail } from "@/store/darkMode";
 import icClose from "@/assets/img/icons/ic_close.png";
+import StarsCanvas from "@/components/templates/StarCanvas";
+import Header from "@/components/atoms/Header";
+import AboutSection from "@/components/templates/AboutSection";
+import ProducSection from "@/components/templates/ProducSection";
 
 export default function Home() {
     const { darkMode: darkmodeSlice } = useAppSelector((store) => store);
@@ -94,180 +98,204 @@ export default function Home() {
             }, 3000);
         }
     }, [errorForm, successForm]);
-    return (
-        <main className={classNames("", darkMode ? "bg-black" : "bg-vani")}>
-            {errorForm && (
-                <Alert
-                    message='Error'
-                    description='Send email not success. Please try again later .'
-                    type='error'
-                    showIcon
-                />
-            )}
-            {successForm && (
-                <Alert
-                    message='Success'
-                    description='Send email successfully.'
-                    type='success'
-                    showIcon
-                />
-            )}
-            {openEmail && (
-                <div
-                    onClick={() => {
-                        dispatch(toggleEmail(false));
-                        reset();
-                    }}
-                    className='rounded fixed flex items-center justify-center z-30 top-0 left-0 w-full h-full bg-[black] bg-opacity-70'
-                >
-                    <div className={classNames("w-[95%] z-10 md:w-[70%] lg:w-[50%] z-10 ")}>
-                        <form
-                            ref={formRef}
-                            className={classNames(
-                                "relative w-full h-full  p-6 md:p-8 lg:p-16",
-                                darkMode ? "bg-black" : "bg-vani",
-                            )}
-                            onClick={(e) => e.stopPropagation()}
-                            onSubmit={handleSubmit(onSubmitForm)}
-                        >
-                            <div
-                                onClick={() => {
-                                    dispatch(toggleEmail(false));
 
-                                    reset();
-                                }}
+    const openText = useAppSelector((store) => store?.darkMode.openText);
+    // useEffect(() => {
+    //     document.documentElement.style.setProperty("--cursor-size", `${openText ? 150 : 0}px`);
+    // }, [openText]);
+    // useEffect(() => {
+    //     const onMouseMove = (e: any) => {
+    //         document.documentElement.style.setProperty("--cursor-x", e.clientX - 5 + "px");
+    //         document.documentElement.style.setProperty("--cursor-y", e.clientY - 50 + "px");
+    //     };
+    //     window.addEventListener("mousemove", onMouseMove);
+    //     // return () => {
+    //     //     window.removeEventListener("mousemove", onMouseMove);
+    //     // };
+    // }, []);
+    return (
+        <div>
+            {/* <Header /> */}
+            <main className={classNames("", darkMode ? "bg-black" : "bg-vani")}>
+                {errorForm && (
+                    <Alert
+                        message='Error'
+                        description='Send email not success. Please try again later .'
+                        type='error'
+                        showIcon
+                    />
+                )}
+                {successForm && (
+                    <Alert
+                        message='Success'
+                        description='Send email successfully.'
+                        type='success'
+                        showIcon
+                    />
+                )}
+
+                {openEmail && (
+                    <div
+                        onClick={() => {
+                            dispatch(toggleEmail(false));
+                            reset();
+                        }}
+                        className='rounded fixed flex items-center justify-center z-30 top-0 left-0 w-full h-full bg-[black] bg-opacity-70'
+                    >
+                        <div className={classNames("w-[95%] z-10 md:w-[70%] lg:w-[50%] z-10 ")}>
+                            <form
+                                ref={formRef}
                                 className={classNames(
-                                    "absolute cursor-pointer right-[8px] top-[8px] md:right-[8px] md:top-[8px] lg:right-[12px] lg:top-[12px] w-[16px] h-[16px] pointer",
+                                    "relative w-full h-full  p-6 md:p-8 lg:p-16",
+                                    darkMode ? "bg-black" : "bg-vani",
                                 )}
+                                onClick={(e) => e.stopPropagation()}
+                                onSubmit={handleSubmit(onSubmitForm)}
                             >
-                                <Image
-                                    src={darkMode ? icCloseDark : icClose}
-                                    className='w-full h-full object-cover'
-                                    width={0}
-                                    height={0}
-                                    alt='close'
-                                />
-                            </div>
-                            <h2
-                                className={classNames(
-                                    "text-white mb-6 md:mb-8 lg:mb-10 text-[16px] flex justify-start items-center font-[24px] mb-4 md:mb-6 lg:mb-8 relative mr-2",
-                                )}
-                            >
-                                <strong
+                                <div
+                                    onClick={() => {
+                                        dispatch(toggleEmail(false));
+
+                                        reset();
+                                    }}
                                     className={classNames(
-                                        "mr-2",
-                                        darkMode ? "text-gradient-dark" : "text-gradient",
+                                        "absolute cursor-pointer right-[8px] top-[8px] md:right-[8px] md:top-[8px] lg:right-[12px] lg:top-[12px] w-[16px] h-[16px] pointer",
                                     )}
                                 >
-                                    #
-                                </strong>{" "}
-                                <p
-                                    className={classNames(
-                                        "mr-2 ",
-                                        darkMode ? "text-white" : "text-black",
-                                    )}
-                                >
-                                    Contact me follow these informations
-                                </p>{" "}
-                            </h2>
-                            <div className='flex flex-wrap justify-between w-full'>
-                                <div className=' w-full lg:w-[49%]'>
-                                    <input
-                                        placeholder='Name'
-                                        className={classNames(
-                                            darkMode ? "bg-black text-gray" : "bg-white text-black",
-                                            "w-full mb-4 md:mb-6 lg:mb-0 border-gray border border solid px-2 py-2 outline-none",
-                                        )}
-                                        type='text'
-                                        {...register("name")}
+                                    <Image
+                                        src={darkMode ? icCloseDark : icClose}
+                                        className='w-full h-full object-cover'
+                                        width={0}
+                                        height={0}
+                                        alt='close'
                                     />
-                                    {errors.name && (
-                                        <p className='text-[red] my-3'>{errors.name.message}</p>
-                                    )}
                                 </div>
-                                <div className='w-full lg:w-[49%]'>
+                                <h2
+                                    className={classNames(
+                                        "text-white mb-6 md:mb-8 lg:mb-10 text-[16px] flex justify-start items-center font-[24px] mb-4 md:mb-6 lg:mb-8 relative mr-2",
+                                    )}
+                                >
+                                    <strong
+                                        className={classNames(
+                                            "mr-2",
+                                            darkMode ? "text-gradient-dark" : "text-gradient",
+                                        )}
+                                    >
+                                        #
+                                    </strong>{" "}
+                                    <p
+                                        className={classNames(
+                                            "mr-2 ",
+                                            darkMode ? "text-white" : "text-black",
+                                        )}
+                                    >
+                                        Contact me follow these informations
+                                    </p>{" "}
+                                </h2>
+                                <div className='flex flex-wrap justify-between w-full'>
+                                    <div className=' w-full lg:w-[49%]'>
+                                        <input
+                                            placeholder='Name'
+                                            className={classNames(
+                                                darkMode
+                                                    ? "bg-black text-gray"
+                                                    : "bg-white text-black",
+                                                "w-full mb-4 md:mb-6 lg:mb-0 border-gray border border solid px-2 py-2 outline-none",
+                                            )}
+                                            type='text'
+                                            {...register("name")}
+                                        />
+                                        {errors.name && (
+                                            <p className='text-[red] my-3'>{errors.name.message}</p>
+                                        )}
+                                    </div>
+                                    <div className='w-full lg:w-[49%]'>
+                                        <input
+                                            placeholder='Email'
+                                            className={classNames(
+                                                darkMode
+                                                    ? "bg-black text-gray"
+                                                    : "bg-white text-black",
+                                                "w-full border-gray border border solid px-2 py-2 outline-none",
+                                            )}
+                                            type='text'
+                                            {...register("email")}
+                                        />
+                                        {errors.email && (
+                                            <p className='text-[red] my-3'>
+                                                {errors.email.message}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className='flex flex-wrap justify-between w-full my-4 md:my-6 lg:my-8'>
                                     <input
-                                        placeholder='Email'
+                                        placeholder='Title'
                                         className={classNames(
                                             darkMode ? "bg-black text-gray" : "bg-white text-black",
                                             "w-full border-gray border border solid px-2 py-2 outline-none",
                                         )}
-                                        type='text'
-                                        {...register("email")}
+                                        {...register("title")}
                                     />
-                                    {errors.email && (
-                                        <p className='text-[red] my-3'>{errors.email.message}</p>
+                                    {errors.title && (
+                                        <p className='text-[red] my-3'>{errors.title.message}</p>
                                     )}
                                 </div>
-                            </div>
-                            <div className='flex flex-wrap justify-between w-full my-4 md:my-6 lg:my-8'>
-                                <input
-                                    placeholder='Title'
-                                    className={classNames(
-                                        darkMode ? "bg-black text-gray" : "bg-white text-black",
-                                        "w-full border-gray border border solid px-2 py-2 outline-none",
+                                <div className='flex flex-wrap justify-between w-full mb-4 md:mb-6 lg:mb-8'>
+                                    <textarea
+                                        placeholder='Message'
+                                        className={classNames(
+                                            darkMode ? "bg-black text-gray" : "bg-white text-black",
+                                            "w-full border-gray border border solid px-2 py-2 outline-none",
+                                        )}
+                                        {...register("message")}
+                                    />
+                                    {errors.message && (
+                                        <p className='text-[red] my-3'>{errors.message.message}</p>
                                     )}
-                                    {...register("title")}
-                                />
-                                {errors.title && (
-                                    <p className='text-[red] my-3'>{errors.title.message}</p>
-                                )}
-                            </div>
-                            <div className='flex flex-wrap justify-between w-full mb-4 md:mb-6 lg:mb-8'>
-                                <textarea
-                                    placeholder='Message'
+                                </div>
+                                <button
                                     className={classNames(
-                                        darkMode ? "bg-black text-gray" : "bg-white text-black",
-                                        "w-full border-gray border border solid px-2 py-2 outline-none",
+                                        "w-max font-normal z-10 text-white  relative",
+                                        darkMode ? "bg-[transparent]" : "",
                                     )}
-                                    {...register("message")}
-                                />
-                                {errors.message && (
-                                    <p className='text-[red] my-3'>{errors.message.message}</p>
-                                )}
-                            </div>
-                            {/* <ReCAPTCHA
-                                sitekey={"6Lc5RjQnAAAAANdcGEx96aLZmljZ0MbW-XEyAKCk"}
-                                onChange={onSubmitForm}
-                            /> */}
-                            <button
-                                className={classNames(
-                                    "w-max font-normal z-10 text-white  relative",
-                                    darkMode ? "bg-[transparent]" : "",
-                                )}
-                                type='submit'
-                                // onClick={handleOpenModal}
-                            >
-                                <div
-                                    className={classNames(
-                                        "w-[calc(100%_+_2px)] h-[calc(100%_+_2px)] absolute top-[-1px] left-[-1px] ",
-                                        darkMode ? "bg-gray" : "bg-gradient ",
-                                    )}
-                                />
-
-                                <p
-                                    className={classNames(
-                                        "relative z-10   w-full h-full  py-2 px-8",
-                                        darkMode ? " bg-black text-white" : " bg-vani text-black",
-                                    )}
+                                    type='submit'
+                                    // onClick={handleOpenModal}
                                 >
-                                    {" "}
-                                    Send
-                                </p>
-                            </button>
-                        </form>
+                                    <div
+                                        className={classNames(
+                                            "w-[calc(100%_+_2px)] h-[calc(100%_+_2px)] absolute top-[-1px] left-[-1px] ",
+                                            darkMode ? "bg-gray" : "bg-gradient ",
+                                        )}
+                                    />
+
+                                    <p
+                                        className={classNames(
+                                            "relative z-10   w-full h-full  py-2 px-8",
+                                            darkMode
+                                                ? " bg-black text-white"
+                                                : " bg-vani text-black",
+                                        )}
+                                    >
+                                        {" "}
+                                        Send
+                                    </p>
+                                </button>
+                            </form>
+                        </div>
                     </div>
+                )}
+                <div className='relative z-0'>
+                    <HeroSection />
+                    <StarsCanvas />
                 </div>
-            )}
-            <>
-                <HeroSection />
-                <DeclarationSection />
+                <AboutSection />
                 <TechSection />
-                <CountSection />
+                <ProducSection />
+                {/* <CountSection /> */}
                 <ProjectsSection />
                 <Footer />
-            </>
-            {/* {!resizeState?.isLargeDesktop && (
+                {/* {!resizeState?.isLargeDesktop && (
                 <>
                     <HeroSection />
                     <DeclarationSection />
@@ -320,6 +348,7 @@ export default function Home() {
                     </Swiper>
                 </>
             )} */}
-        </main>
+            </main>
+        </div>
     );
 }
