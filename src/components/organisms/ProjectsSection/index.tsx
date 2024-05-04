@@ -11,6 +11,7 @@ import { Alert } from "antd";
 import { useAppSelector } from "@/store/hooks";
 import useWindowResize from "@/hooks/useWindowResize";
 import useDisableSwiper from "@/hooks/useDisableSwiper";
+import { ServiceCard } from "@/components/templates/AboutSection";
 
 interface ProjectsSectionProps {}
 
@@ -42,6 +43,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
         speed: 800,
         slidesToShow: 3,
         cssEase: "ease-in-out",
+
         responsive: [
             {
                 breakpoint: 1024,
@@ -121,60 +123,62 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
                     <Slider {...settings}>
                         {dataProjects.map((item, index) => {
                             return (
-                                <div
-                                    className='px-4 h-full rounded-lg overflow-hidden'
-                                    key={`${index * index}`}
-                                >
+                                <ServiceCard key={index} className={classNames(" mx-4")}>
                                     <div
-                                        className={classNames(
-                                            "border border-solid",
-                                            darkMode ? "border-white" : "border-gray",
-                                        )}
+                                        className='h-full rounded-lg overflow-hidden border border-solid border-[#fb2056]'
+                                        key={`${index * index}`}
                                     >
                                         <div
-                                            onClick={() => {
-                                                if (item.link.length === 0) {
-                                                    handleChangeLink(item.link.length);
-                                                }
-                                            }}
-                                            className={classNames(
-                                                "w-full border-b border-solid  bg-white h-[300px] flex items-center",
-                                                darkMode ? "border-white" : "border-gray",
-                                            )}
-                                            data-aos={
-                                                resizeState?.isLargeDesktop ? "" : "fade-down"
+                                            className={
+                                                classNames()
+                                                // "border border-solid",
+                                                // darkMode ? "border-white" : "border-gray",
                                             }
-                                            data-aos-duration='500'
                                         >
-                                            <Image
-                                                src={item.image}
-                                                alt={item.image}
-                                                className='w-full h-full object-contain'
-                                                width={0}
-                                                height={0}
-                                            />
-                                        </div>
-                                        <div
-                                            className={classNames(
-                                                "w-full py-4 px-2 border-b border-solid text-gray",
-                                                darkMode ? "border-white" : "border-gray",
-                                            )}
-                                        >
-                                            Tech stack : {item?.techStack}
-                                        </div>
-                                        <div className='w-full py-4 px-2 flex flex-col'>
-                                            <h2
+                                            <div
+                                                onClick={() => {
+                                                    if (item.link.length === 0) {
+                                                        handleChangeLink(item.link.length);
+                                                    }
+                                                }}
                                                 className={classNames(
-                                                    "mb-4",
-                                                    darkMode ? "text-white" : "text-black",
+                                                    "w-full border-b border-solid  bg-white h-[300px] flex items-center",
+                                                    darkMode ? "border-white" : "border-gray",
+                                                )}
+                                                data-aos={
+                                                    resizeState?.isLargeDesktop ? "" : "fade-down"
+                                                }
+                                                data-aos-duration='500'
+                                            >
+                                                <Image
+                                                    src={item.image}
+                                                    alt={item.image}
+                                                    className='w-full h-full object-contain'
+                                                    width={0}
+                                                    height={0}
+                                                />
+                                            </div>
+                                            <div
+                                                className={classNames(
+                                                    "w-full py-4 px-2 border-b border-solid text-gray",
+                                                    darkMode ? "border-white" : "border-gray",
                                                 )}
                                             >
-                                                {item.title}
-                                            </h2>
-                                            {/* <p className='text-gray mb-4'>{item.description}</p> */}
+                                                Tech stack : {item?.techStack}
+                                            </div>
+                                            <div className='w-full py-4 px-2 flex flex-col'>
+                                                <h2
+                                                    className={classNames(
+                                                        "mb-4",
+                                                        darkMode ? "text-white" : "text-black",
+                                                    )}
+                                                >
+                                                    {item.title}
+                                                </h2>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </ServiceCard>
                             );
                         })}
                     </Slider>{" "}

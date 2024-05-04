@@ -1,0 +1,36 @@
+$gradient-cl-dark: linear-gradient(to right, #fb2039, #fb2056, #fb2039);
+
+.mask,
+.body {
+    align-items: center;
+
+    cursor: default;
+
+    display: flex;
+    font-size: 64px;
+
+    line-height: 66px;
+
+    width: 100vw;
+
+    p {
+        max-width: 1100px;
+    }
+
+    span {
+        color: #ec4e39;
+    }
+}
+
+.mask {
+    background: $gradient-cl-dark;
+
+    /* stylelint-disable-next-line string-quotes */
+    mask-image: url("../../../assets/test-mask.svg");
+
+    mask-repeat: no-repeat;
+
+    mask-size: 40px;
+
+    position: absolute;
+}

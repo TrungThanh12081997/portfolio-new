@@ -13,18 +13,18 @@ export const dataProjects = [
         title: "Pnyx Commcare Service",
         techStack: "ReactJS, Typescript, NestJS, NodeJS, MongoDB",
     },
-    {
-        link: "https://dision.tech",
-        image: "https://dision.tech/dision_logo_black.svg",
-        title: "Dision",
-        techStack: "NextJS, Typescript, TailwindCSS, Strapi",
-    },
-    {
-        link: "https://dynexo.de",
-        image: "https://dynexo.de/images/dynexo_logo_white.svg",
-        title: "Dynexo",
-        techStack: "ReactJS, Typescript",
-    },
+    // {
+    //     link: "https://dision.tech",
+    //     image: "https://dision.tech/dision_logo_black.svg",
+    //     title: "Dision",
+    //     techStack: "NextJS, Typescript, TailwindCSS, Strapi",
+    // },
+    // {
+    //     link: "https://dynexo.de",
+    //     image: "https://dynexo.de/images/dynexo_logo_white.svg",
+    //     title: "Dynexo",
+    //     techStack: "ReactJS, Typescript",
+    // },
     {
         link: "https://novaworldphanthiet.com.vn/",
         image: nova,

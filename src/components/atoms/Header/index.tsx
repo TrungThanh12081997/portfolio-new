@@ -36,11 +36,17 @@ const Header: React.FC<HeaderProps> = () => {
     const resizeState = useWindowResize();
 
     return (
-        <div className={classNames("header fixed z-20 w-full", darkMode ? "bg-black" : "bg-vani")}>
+        <div
+            className={classNames(
+                "header fixed z-20 w-full",
+                "bg-gradient-to-b from-black via-black to-transparent opacity-100 sm:opacity-30",
+                // darkMode ? "bg-black" : "bg-vani"
+            )}
+        >
             <div className='relative'>
                 <div
                     className={classNames(
-                        "container mx-auto py-8 md:py-10 lg:py-12 xl:py-14 px-6 md:px-8 lg:px-12",
+                        "container mx-auto py-8 md:py-10 lg:py-12 xl:py-14 px-6 md:px-8 lg:px-0",
                     )}
                 >
                     <div
