@@ -16,7 +16,6 @@ import mobile from "@/assets/img/icons/mobile.svg";
 import creator from "@/assets/img/icons/creator.svg";
 import Image from "next/image";
 import TextSection from "@/components/molecules/TextSection";
-import ToggleHover from "@/components/molecules/ToggleHover";
 import ComputersCanvas from "@/components/organisms/ComputerCanvas";
 export const ServiceCard = ({
     className: classExtra,
@@ -166,7 +165,6 @@ const AboutSection = () => {
 
                 <TextSection listCharacterAbout={listCharacterAbout} />
 
-                {/* <ToggleHover services={services} /> */}
                 <div className='lg:h-[500px]'>
                     <ComputersCanvas />
                 </div>
